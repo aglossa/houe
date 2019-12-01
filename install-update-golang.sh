@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 # File brought by github.com/aglossa/houe
 
 if ! [ -f ~/update-golang/update-golang.sh ]; then
