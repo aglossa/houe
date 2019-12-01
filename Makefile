@@ -8,7 +8,7 @@ dotfiles: # install le .bashrc pour l'utilisateur courant et pour root
 	cp .bashrc ~/.bashrc
 	sudo cp .bashrc /root/.bashrc
 
-install: # install l'outil de mise à jour de golang
+golang: # install l'outil de mise à jour de golang
 	./install-update-golang.sh
 
 help:
