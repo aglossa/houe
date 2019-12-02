@@ -10,7 +10,7 @@ pause
 apt-get dist-upgrade
 pause
 
-if ! [ -x "$(command -v checkrestart)" ]; then
+if ! [[ -x "$(command -v checkrestart)" ]]; then
   apt-get install debian-goodies
 fi
 

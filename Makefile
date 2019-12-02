@@ -4,9 +4,11 @@ HOSTNAME ?= $(hostname)
 
 default: help
 
-dotfiles: # install le .bashrc pour l'utilisateur courant et pour root
+dotfiles: # installe le .bashrc pour l'utilisateur courant
 	cp .bashrc ~/.bashrc
-	sudo cp .bashrc /root/.bashrc
+
+root-dotfiles: #installe le .bashrc pour root (run with sudo)
+	cp .bashrc /root/.bashrc
 
 golang: # install l'outil de mise à jour de golang
 	./install-update-golang.sh
