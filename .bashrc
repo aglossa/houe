@@ -8,7 +8,7 @@
 # umask 022
 
 user=$(whoami)
-if [ $user = "root"] 
+if [[ $user = "root"]] 
 then
     Reset="\[\e[0m\]"
     Red="\[\e[0;31m\]"
