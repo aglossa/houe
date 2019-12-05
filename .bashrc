@@ -25,7 +25,7 @@ fi
 export LS_OPTIONS='--color=auto'
 eval "`dircolors`"
 alias ls='ls $LS_OPTIONS -G'
-alias ll='ls $LS_OPTIONS -alhTF'
+alias ll='ls $LS_OPTIONS -alh'
 alias la='ls $LS_OPTIONS -A'
 alias l='ls $LS_OPTIONS -CF'
 
