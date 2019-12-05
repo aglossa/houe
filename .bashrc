@@ -13,7 +13,7 @@ then
     Reset="\[\e[0m\]"
     Red="\[\e[0;31m\]"
     BoldRed="\[\e[1;31m\]"
-    export PS1="$BoldRed\u$Reset@$Red\h$Reset:$Red\w$Reset "
+    export PS1="$BoldRed\u$Reset@\h:$Red\w$Reset "
 else
     Reset="\[\e[0m\]"
     Cyan="\[\e[0;36m\]"
