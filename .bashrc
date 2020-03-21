@@ -8,12 +8,12 @@
 # umask 022
 
 user=$(whoami)
-if [ $user = "root"] 
+if [ $user = "root" ] 
 then
     Reset="\[\e[0m\]"
     Red="\[\e[0;31m\]"
     BoldRed="\[\e[1;31m\]"
-    export PS1="$BoldRed\u$Reset@$Red\h$Reset:$Red\w$Reset "
+    export PS1="$BoldRed\u$Reset@\h:$Red\w$Reset "
 else
     Reset="\[\e[0m\]"
     Cyan="\[\e[0;36m\]"
@@ -24,9 +24,10 @@ fi
 # You may uncomment the following lines if you want `ls' to be colorized:
 export LS_OPTIONS='--color=auto'
 eval "`dircolors`"
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -lA'
-alias l='ls $LS_OPTIONS -l'
+alias ls='ls $LS_OPTIONS -G'
+alias ll='ls $LS_OPTIONS -alh'
+alias la='ls $LS_OPTIONS -A'
+alias l='ls $LS_OPTIONS -CF'
 
 # Some more alias to avoid making mistakes:
 alias rm='rm -iv'
@@ -50,8 +51,10 @@ alias c="clear"
 alias histg="history | grep" 
 alias ..='cd ..' 
 alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ~="cd ~"
-extract() { 
+
+function extract() { 
     if [ -f $1 ] ; then 
       case $1 in 
         *.tar.bz2)   tar xjf $1     ;; 
@@ -85,3 +88,43 @@ alias path='echo -e ${PATH//:/\\n}'
 alias listen="lsof -P -i -n" 
 alias port='netstat -tulanp'
 alias ipinfo="curl ifconfig.me/ip && curl ifconfig.me/host" 
+
+# améliorations issues de https://blog.jonlu.ca/posts/shell-shortcuts
+function mkd() {
+  mkdir -p "$@" && cd "$_"
+}
+
+function qg() {
+  message="$*"
+  git add --all
+  git commit -m $message 
+  git push
+}
+
+function fs() {
+  if du -b /dev/null >/dev/null 2>&1; then
+    local arg=-sbh
+  else
+    local arg=-sh
+  fi
+  if [[ -n $@ ]]; then
+    du $arg -- "$@"
+  else
+    du $arg .[^.]* ./*
+  fi
+}
+
+function curl_time() {
+  curl -so /dev/null -w "\
+   namelookup:  %{time_namelookup}s\n\
+      connect:  %{time_connect}s\n\
+   appconnect:  %{time_appconnect}s\n\
+  pretransfer:  %{time_pretransfer}s\n\
+     redirect:  %{time_redirect}s\n\
+starttransfer:  %{time_starttransfer}s\n\
+-------------------------\n\
+        total:  %{time_total}s\n" "$@"
+}
+
+
+
