@@ -5,7 +5,7 @@ HOSTNAME ?= $(hostname)
 default: help
 
 dotfiles:	## installe le .bashrc pour l'utilisateur courant
-	cp .bashrc ~/.bashrc
+	ln  -s ~/.bashrc .bashrc
 
 root-dotfiles:	## installe le .bashrc pour root (run with sudo)
 	cp .bashrc /root/.bashrc
