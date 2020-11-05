@@ -86,8 +86,10 @@ alias path='echo -e ${PATH//:/\\n}'
   
 #Network 
 alias listen="lsof -P -i -n" 
-alias port='netstat -tulanp'
+alias ports='netstat -tulanp'
 alias ipinfo="curl ifconfig.me/ip && curl ifconfig.me/host" 
+alias pserver="python -m SimpleHTTPServer 8000"
+alias p3server="python -m http.server 8000"
 
 # améliorations issues de https://blog.jonlu.ca/posts/shell-shortcuts
 function mkd() {
