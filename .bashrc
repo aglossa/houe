@@ -13,12 +13,14 @@ then
     Reset="\[\e[0m\]"
     Red="\[\e[0;31m\]"
     BoldRed="\[\e[1;31m\]"
-    export PS1="$BoldRed\u$Reset@\h:$Red\w$Reset "
+#    export PS1="$BoldRed\u$Reset@\h:$Red\w$Reset "
+    export PS1='\[\e[0;97m\e[105m\]\u\[\e[0;37m\e[45m\]@\h:\[\e[0;97m\e[105m\]\w\[\e[00m\] '
 else
     Reset="\[\e[0m\]"
     Cyan="\[\e[0;36m\]"
     BoldCyan="\[\e[1;36m\]"
-    export PS1="$Cyan\u$Reset@$BoldCyan\h$Reset:$Cyan\w$Reset "
+#    export PS1="$Cyan\u$Reset@$BoldCyan\h$Reset:$Cyan\w$Reset "
+    export PS1='\[\e[0;36m\e[106m\]\u\[\e[0;34m\e[106m\]@\h:\[\e[0;36m\e[106m\]\w\[\e[00m\] '
 fi
 
 # You may uncomment the following lines if you want `ls' to be colorized:
