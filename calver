@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function describe {
+    git describe
+}
+
+function tag {
+    count=$(git tag | wc -l)
+    count=$((count+1))
+    version=$(date +%y.%m).$count
+    git tag -a $version -m "Release" || true
+	git push origin $version
+    describe
+}
+
+function help {
+    echo "$0 <task> <args>"
+    echo "Tasks:"
+    compgen -A function | cat -n
+}
+
+${@:-describe}
